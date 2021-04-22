@@ -80,6 +80,8 @@ class FitKitPlugin(private val registrar: Registrar) : MethodCallHandler {
 
     private fun hasPermissions(request: PermissionsRequest, result: Result) {
         val options = FitnessOptions.builder()
+                .accessActivitySessions(FitnessOptions.ACCESS_READ)
+                .accessSleepSessions(FitnessOptions.ACCESS_READ)
                 .addDataTypes(request.types.map { it.dataType })
                 .build()
 
@@ -92,6 +94,8 @@ class FitKitPlugin(private val registrar: Registrar) : MethodCallHandler {
 
     private fun requestPermissions(request: PermissionsRequest, result: Result) {
         val options = FitnessOptions.builder()
+                .accessActivitySessions(FitnessOptions.ACCESS_READ)
+                .accessSleepSessions(FitnessOptions.ACCESS_READ)
                 .addDataTypes(request.types.map { it.dataType })
                 .build()
 
@@ -108,6 +112,8 @@ class FitKitPlugin(private val registrar: Registrar) : MethodCallHandler {
      */
     private fun revokePermissions(result: Result) {
         val fitnessOptions = FitnessOptions.builder()
+                .accessActivitySessions(FitnessOptions.ACCESS_READ)
+                .accessSleepSessions(FitnessOptions.ACCESS_READ)
                 .build()
 
         if (!hasOAuthPermission(fitnessOptions)) {
@@ -136,6 +142,8 @@ class FitKitPlugin(private val registrar: Registrar) : MethodCallHandler {
 
     private fun read(request: ReadRequest<*>, result: Result) {
         val options = FitnessOptions.builder()
+                .accessActivitySessions(FitnessOptions.ACCESS_READ)
+                .accessSleepSessions(FitnessOptions.ACCESS_READ)
                 .addDataType(request.type.dataType)
                 .build()
 
